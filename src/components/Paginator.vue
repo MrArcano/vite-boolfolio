@@ -28,7 +28,7 @@ export default {
         :key="link.label"
         v-html="link.label"
         type="button"
-        class="btn btn-info fw-bold"
+        class="btn btn-warning fw-bold"
         @click="changeUrl(link.url)"
         :disabled="link.active || !link.url"
       ></button>
