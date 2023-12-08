@@ -12,7 +12,7 @@ export default {
 
 <template>
   <div>
-    <h1>Contacts</h1>
+    <h1 class="text-center">Contacts</h1>
   </div>
 </template>
 

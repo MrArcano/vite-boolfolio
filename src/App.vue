@@ -18,7 +18,9 @@ export default {
 <template>
   <div>
     <Header />
-    <router-view></router-view>
+    <div class="container my-5">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
