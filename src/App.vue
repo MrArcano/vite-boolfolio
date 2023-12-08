@@ -2,7 +2,7 @@
 import axios from "axios";
 import { store } from "./data/store";
 import ProjectCard from "./components/ProjectCard.vue";
-import Paginator from "./components/Paginator.vue";
+import Paginator from "./components/partials/Paginator.vue";
 
 export default {
   name: "App",
@@ -52,14 +52,9 @@ export default {
 </script>
 
 <template>
-  <div class="container my-5">
-    <h1 class="text-center">Vite Boolfolio</h1>
-    <div class="row">
-      <div class="col-6" v-for="project in projects" v-bind:key="project.id">
-        <ProjectCard :project="project" />
-      </div>
-    </div>
-    <Paginator @changePage="getAPI($event)" :paginator="paginator" />
+  <div>
+    <h1>APP</h1>
+    <router-view></router-view>
   </div>
 </template>
 

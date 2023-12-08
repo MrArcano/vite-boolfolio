@@ -23,25 +23,10 @@ export default {
   <a href="#">
     <div
       class="card text-bg-secondary my-3 m-auto"
-      style="max-width: 540px; min-height: 200px"
+      style="max-width: 400px; min-height: 220px"
     >
       <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            v-if="project.image"
-            :src="'http://' + store.mySite + '/storage/' + project.image"
-            class="img-fluid rounded-start"
-            :alt="project.name"
-          />
-          <img
-            v-else
-            src="http://127.0.0.1:8000/img/placeholder.png"
-            class="img-fluid rounded-start"
-            :alt="project.name"
-          />
-          <!-- <p v-else class="text-center my-5">NO IMAGE</p> -->
-        </div>
-        <div class="col-md-8">
+        <div class="col-12">
           <div class="card-body">
             <h5 class="card-title">{{ project.name }}</h5>
             <p class="card-text">{{ project.description }}</p>
