@@ -40,10 +40,6 @@ export default {
           console.log(error);
         });
     },
-
-    prova(e) {
-      console.log(e);
-    },
   },
   mounted() {
     this.getAPI(store.ApiUrl);

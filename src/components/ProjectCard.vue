@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <a href="#">
+  <router-link :to="({ name: 'datailProject', params: { slug: project.slug } })">
     <div
       class="card text-bg-secondary my-3 m-auto"
       style="max-width: 400px; min-height: 220px"
@@ -56,7 +56,7 @@ export default {
         </div>
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
