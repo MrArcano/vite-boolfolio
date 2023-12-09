@@ -24,6 +24,7 @@ export default {
           // handle success
           this.isLoaded = true;
           this.project = response.data;
+          console.log(Object.keys(response.data).length);
         })
         .catch((error) => {
           // handle error
@@ -60,50 +61,55 @@ export default {
 
 <template>
   <div v-if="isLoaded">
-    <div class="text-center">
-      <h1 class="d-inline-block my-5">DetailProject</h1>
-      <span class="badge text-bg-warning mx-3">
-        {{ project.status }}
-      </span>
+    <div v-if="Object.keys(project).length == 0" class="text-center">
+      <h1 class="d-inline-block my-5">Progetto non trovato</h1>
     </div>
-    <div class="text-bg-secondary rounded rounded-5 overflow-hidden">
-      <div class="row">
-        <div class="col-4">
-          <img class="img-fluid" :src="project.image" :alt="project.name">
-        </div>
-        <div class="col-8">
-          <div class=" p-5">
-            <h3>{{ project.name }}</h3>
-            
-            <p><strong>Descrizione: </strong>{{ project.description }}</p>
-            
-            <p>
-              <strong>Type:</strong>
-              <span class="badge mx-1" :class="[project.type?.name ? 'text-bg-dark' : 'text-bg-warning']">
-                {{ project.type?.name || "No Type" }}
-              </span>
+    <div v-else>
+      <div class="text-center">
+        <h1 class="d-inline-block my-5">DetailProject</h1>
+        <span class="badge text-bg-warning mx-3">
+          {{ project.status }}
+        </span>
+      </div>
+      <div class="text-bg-secondary rounded rounded-5 overflow-hidden">
+        <div class="row">
+          <div class="col-4">
+            <img class="img-fluid" :src="project.image" :alt="project.name">
+          </div>
+          <div class="col-8">
+            <div class=" p-5">
+              <h3>{{ project.name }}</h3>
+              
+              <p><strong>Descrizione: </strong>{{ project.description }}</p>
+              
+              <p>
+                <strong>Type:</strong>
+                <span class="badge mx-1" :class="[project.type?.name ? 'text-bg-dark' : 'text-bg-warning']">
+                  {{ project.type?.name || "No Type" }}
+                </span>
 
-              <strong class="ms-lg-5">Tecnologie:</strong>
-              <span v-if="!project.tecnologies.length" class="badge text-bg-warning mx-1">
-                No Tecnology
-              </span>
-              <span class="badge text-bg-dark mx-1" v-for="tecnology in project.tecnologies" :key="tecnology.id">
-                {{ tecnology.name }}
-              </span>
-            </p>
+                <strong class="ms-lg-5">Tecnologie:</strong>
+                <span v-if="!project.tecnologies.length" class="badge text-bg-warning mx-1">
+                  No Tecnology
+                </span>
+                <span class="badge text-bg-dark mx-1" v-for="tecnology in project.tecnologies" :key="tecnology.id">
+                  {{ tecnology.name }}
+                </span>
+              </p>
 
-            <p>
-              <strong>Dal </strong>
-              <span>{{ dateFormat(project.start_date) }}</span>
-              <strong v-if="project.end_date"> al </strong>
-              <span v-else> - </span>
-              <span>{{ dateFormat(project.end_date) }}</span>
-            </p>
+              <p>
+                <strong>Dal </strong>
+                <span>{{ dateFormat(project.start_date) }}</span>
+                <strong v-if="project.end_date"> al </strong>
+                <span v-else> - </span>
+                <span>{{ dateFormat(project.end_date) }}</span>
+              </p>
 
-            <p>
-              <strong v-if="project.is_group_project === 'Sì'">Progetto di gruppo</strong>
-            </p>
+              <p>
+                <strong v-if="project.is_group_project === 'Sì'">Progetto di gruppo</strong>
+              </p>
 
+            </div>
           </div>
         </div>
       </div>
