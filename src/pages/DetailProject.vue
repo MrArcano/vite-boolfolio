@@ -1,21 +1,26 @@
 <script>
 import axios from "axios";
+import Loader from "../components/partials/Loader.vue";
 
 export default {
   name: "DetailProject",
   created() {},
+  components:{
+    Loader
+  },
   data() {
     return {
+      isLoaded: false,
       project: {},
     };
   },
   props: {},
   methods: {
     getAPI(url) {
-      axios
-        .get(url)
+      axios.get(url)
         .then((response) => {
           // handle success
+          this.isLoaded = true;
           console.log(response.data);
           this.project = response.data;
         })
@@ -32,13 +37,13 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div v-if="isLoaded">
     <h1 class="text-center">DetailProject</h1>
-    <p>{{ this.$route.params.slug }}</p>
     <p>{{ project.name }}</p>
     <p>{{ project.description }}</p>
     <p>{{ project.start_date }} - {{ project.end_date }}</p>
   </div>
+  <Loader v-else />
 </template>
 
 <style lang="scss" scoped></style>
