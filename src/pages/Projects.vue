@@ -46,13 +46,13 @@ export default {
     },
   },
   mounted() {
-    this.getAPI(store.ApiUrl);
+    this.getAPI(store.ApiUrl + 'projects-api');
   },
 };
 </script>
 
 <template>
-  <h1 class="text-center">Boolfolio - Projects</h1>
+  <h1 class="text-center my-5">Boolfolio - Projects</h1>
   
   <div v-if="isLoaded">
     <div class="row">
